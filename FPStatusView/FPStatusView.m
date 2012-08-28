@@ -16,6 +16,7 @@
     if (self) {
         
         _statusFont = [UIFont fontWithName:@"HelveticaNeue" size:18];
+        _buttonFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
         _maxSize = CGSizeMake(600, 100);
         _buttonArray = [[NSMutableArray alloc] init];
         
@@ -25,7 +26,7 @@
         
         _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         _activityIndicator.center = CGPointMake(22, 22);
-        _activityIndicator.hidesWhenStopped = NO;
+        _activityIndicator.hidesWhenStopped = YES;
         //_activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin;
         
         _iconView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 21, 21)];
@@ -61,8 +62,9 @@
     for (NSString *arg = buttonTitle; arg != nil; arg = va_arg(args, NSString *)) {
         UIButton *newButton = [[UIButton alloc] init];
         [newButton setTitle:arg forState:UIControlStateNormal];
-        [newButton setBackgroundColor:[UIColor lightGrayColor]];
-        [newButton setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
+        [newButton setBackgroundColor:[UIColor whiteColor]];
+        [[newButton titleLabel] setFont:_buttonFont];
+        [newButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         newButton.layer.cornerRadius = 5.0f;
         newButton.tag = tagI;
         [newButton addTarget:self action:@selector(clickedButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -86,7 +88,7 @@
     CGFloat diffHeight = oldStatusViewSize.height - oldStatusViewSize.height;
     if (diffWidth >= 0 || diffHeight >= 0) { // nouveau status plus large ou plus haut;
         
-        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             // on agrandit
             [self resizeStatusViewWithLabelSize:newStatusLabelSize andButtonCount:newButtonCount];
             // on fait disparaitre
@@ -100,14 +102,14 @@
             // puis on fait apparaitre
             _statusLabel.text = text;
             [self prepareStatusLabelToAppearWithSize:newStatusLabelSize];
-            [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 [self makeStatusLabelAppearWithSize:newStatusLabelSize];
             } completion:nil];
         }];
         
     } else {
         
-        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
             // on fait disparaitre
             [self makeStatusLabelDisappearWithSize:oldStatusLabelSize];
         } completion:^(BOOL finished) {
@@ -119,7 +121,7 @@
             _statusLabel.text = text;
             // puis on fait apparaitre + on rétrécit
             [self prepareStatusLabelToAppearWithSize:newStatusLabelSize];
-            [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 [self resizeStatusViewWithLabelSize:newStatusLabelSize andButtonCount:newButtonCount];
                 [self makeStatusLabelAppearWithSize:newStatusLabelSize];
             } completion:nil];
@@ -195,7 +197,7 @@
         button.alpha = 0.0f;
         
         CGSize textSize = [[button titleForState:UIControlStateNormal] sizeWithFont:_statusFont constrainedToSize:_maxSize lineBreakMode:UILineBreakModeTailTruncation];
-        button.bounds = CGRectMake(0, 0, textSize.width + 24, textSize.height + 24);
+        button.bounds = CGRectMake(0, 0, 12 + textSize.width + 12, 8 + textSize.height + 8);
         button.center = CGPointMake(self.bounds.size.width/2, 12 + size.height + 12 + button.bounds.size.height/2 + [_buttonArray indexOfObject:button] * (button.bounds.size.height + 12));
         [self addSubview:button];
     }
@@ -216,7 +218,7 @@
 
 - (void)resizeStatusViewWithLabelSize:(CGSize)size andButtonCount:(NSInteger)buttonCount
 {
-    self.bounds = CGRectMake(0, 0, CGRectGetMaxX(_iconView.frame) + 12 + size.width + 12, 12 + size.height + 12 + buttonCount * 56);
+    self.bounds = CGRectMake(0, 0, CGRectGetMaxX(_iconView.frame) + 12 + size.width + 12, 12 + size.height + 12 + buttonCount * (44 + 12));
 }
 
 - (void)clickedButton:(id)sender

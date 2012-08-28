@@ -34,6 +34,8 @@ typedef enum {
 @property (nonatomic, assign) CGSize maxSize;
 @property (nonatomic, retain) UIFont *statusFont;
 
+@property (nonatomic, retain) UIFont *buttonFont;
+
 @property (nonatomic, retain) NSMutableArray *buttonArray;
 
 @property (nonatomic, assign) id delegate;
