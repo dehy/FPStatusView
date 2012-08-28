@@ -1,0 +1,346 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		515A0D1315ECEBE900F7060D /* FPStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 515A0D1215ECEBE900F7060D /* FPStatusView.m */; };
+		515A0D1515ECED9600F7060D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 515A0D1415ECED9600F7060D /* QuartzCore.framework */; };
+		515A0D3215ECEF4700F7060D /* videotchat-error.png in Resources */ = {isa = PBXBuildFile; fileRef = 515A0D2C15ECEF4700F7060D /* videotchat-error.png */; };
+		515A0D3315ECEF4700F7060D /* videotchat-error@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 515A0D2D15ECEF4700F7060D /* videotchat-error@2x.png */; };
+		515A0D3415ECEF4700F7060D /* videotchat-hungup.png in Resources */ = {isa = PBXBuildFile; fileRef = 515A0D2E15ECEF4700F7060D /* videotchat-hungup.png */; };
+		515A0D3515ECEF4700F7060D /* videotchat-hungup@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 515A0D2F15ECEF4700F7060D /* videotchat-hungup@2x.png */; };
+		515A0D3615ECEF4700F7060D /* videotchat-ringing.png in Resources */ = {isa = PBXBuildFile; fileRef = 515A0D3015ECEF4700F7060D /* videotchat-ringing.png */; };
+		515A0D3715ECEF4700F7060D /* videotchat-ringing@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 515A0D3115ECEF4700F7060D /* videotchat-ringing@2x.png */; };
+		51A5120515BDED5300A6979A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A5120415BDED5300A6979A /* UIKit.framework */; };
+		51A5120715BDED5300A6979A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A5120615BDED5300A6979A /* Foundation.framework */; };
+		51A5120915BDED5300A6979A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A5120815BDED5300A6979A /* CoreGraphics.framework */; };
+		51A5120F15BDED5300A6979A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 51A5120D15BDED5300A6979A /* InfoPlist.strings */; };
+		51A5121115BDED5300A6979A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A5121015BDED5300A6979A /* main.m */; };
+		51A5121515BDED5300A6979A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A5121415BDED5300A6979A /* AppDelegate.m */; };
+		51A5121815BDED5300A6979A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A5121715BDED5300A6979A /* ViewController.m */; };
+		51A5121B15BDED5300A6979A /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A5121915BDED5300A6979A /* ViewController_iPhone.xib */; };
+		51A5121E15BDED5400A6979A /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A5121C15BDED5400A6979A /* ViewController_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		515A0D1115ECEBE900F7060D /* FPStatusView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FPStatusView.h; path = ../../FPStatusView/FPStatusView.h; sourceTree = "<group>"; };
+		515A0D1215ECEBE900F7060D /* FPStatusView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FPStatusView.m; path = ../../FPStatusView/FPStatusView.m; sourceTree = "<group>"; };
+		515A0D1415ECED9600F7060D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		515A0D2C15ECEF4700F7060D /* videotchat-error.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videotchat-error.png"; sourceTree = "<group>"; };
+		515A0D2D15ECEF4700F7060D /* videotchat-error@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videotchat-error@2x.png"; sourceTree = "<group>"; };
+		515A0D2E15ECEF4700F7060D /* videotchat-hungup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videotchat-hungup.png"; sourceTree = "<group>"; };
+		515A0D2F15ECEF4700F7060D /* videotchat-hungup@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videotchat-hungup@2x.png"; sourceTree = "<group>"; };
+		515A0D3015ECEF4700F7060D /* videotchat-ringing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videotchat-ringing.png"; sourceTree = "<group>"; };
+		515A0D3115ECEF4700F7060D /* videotchat-ringing@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "videotchat-ringing@2x.png"; sourceTree = "<group>"; };
+		51A5120015BDED5300A6979A /* FPStatusViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FPStatusViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		51A5120415BDED5300A6979A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		51A5120615BDED5300A6979A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		51A5120815BDED5300A6979A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		51A5120C15BDED5300A6979A /* FPStatusViewDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FPStatusViewDemo-Info.plist"; sourceTree = "<group>"; };
+		51A5120E15BDED5300A6979A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		51A5121015BDED5300A6979A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		51A5121215BDED5300A6979A /* FPStatusViewDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FPStatusViewDemo-Prefix.pch"; sourceTree = "<group>"; };
+		51A5121315BDED5300A6979A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		51A5121415BDED5300A6979A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		51A5121615BDED5300A6979A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		51A5121715BDED5300A6979A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		51A5121A15BDED5300A6979A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
+		51A5121D15BDED5400A6979A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		51A511FD15BDED5300A6979A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				515A0D1515ECED9600F7060D /* QuartzCore.framework in Frameworks */,
+				51A5120515BDED5300A6979A /* UIKit.framework in Frameworks */,
+				51A5120715BDED5300A6979A /* Foundation.framework in Frameworks */,
+				51A5120915BDED5300A6979A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		515A0D0F15ECEBBB00F7060D /* FPStatusView */ = {
+			isa = PBXGroup;
+			children = (
+				515A0D2B15ECEF4700F7060D /* Icons */,
+				515A0D1115ECEBE900F7060D /* FPStatusView.h */,
+				515A0D1215ECEBE900F7060D /* FPStatusView.m */,
+			);
+			name = FPStatusView;
+			path = FPStatusViewDemo;
+			sourceTree = "<group>";
+		};
+		515A0D2B15ECEF4700F7060D /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				515A0D2C15ECEF4700F7060D /* videotchat-error.png */,
+				515A0D2D15ECEF4700F7060D /* videotchat-error@2x.png */,
+				515A0D2E15ECEF4700F7060D /* videotchat-hungup.png */,
+				515A0D2F15ECEF4700F7060D /* videotchat-hungup@2x.png */,
+				515A0D3015ECEF4700F7060D /* videotchat-ringing.png */,
+				515A0D3115ECEF4700F7060D /* videotchat-ringing@2x.png */,
+			);
+			path = Icons;
+			sourceTree = "<group>";
+		};
+		51A511F515BDED5300A6979A = {
+			isa = PBXGroup;
+			children = (
+				51A5120A15BDED5300A6979A /* FPStatusViewDemo */,
+				515A0D0F15ECEBBB00F7060D /* FPStatusView */,
+				51A5120315BDED5300A6979A /* Frameworks */,
+				51A5120115BDED5300A6979A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		51A5120115BDED5300A6979A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				51A5120015BDED5300A6979A /* FPStatusViewDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		51A5120315BDED5300A6979A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				51A5120815BDED5300A6979A /* CoreGraphics.framework */,
+				51A5120615BDED5300A6979A /* Foundation.framework */,
+				515A0D1415ECED9600F7060D /* QuartzCore.framework */,
+				51A5120415BDED5300A6979A /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		51A5120A15BDED5300A6979A /* FPStatusViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				51A5121315BDED5300A6979A /* AppDelegate.h */,
+				51A5121415BDED5300A6979A /* AppDelegate.m */,
+				51A5121615BDED5300A6979A /* ViewController.h */,
+				51A5121715BDED5300A6979A /* ViewController.m */,
+				51A5121915BDED5300A6979A /* ViewController_iPhone.xib */,
+				51A5121C15BDED5400A6979A /* ViewController_iPad.xib */,
+				51A5120B15BDED5300A6979A /* Supporting Files */,
+			);
+			path = FPStatusViewDemo;
+			sourceTree = "<group>";
+		};
+		51A5120B15BDED5300A6979A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				51A5120C15BDED5300A6979A /* FPStatusViewDemo-Info.plist */,
+				51A5120D15BDED5300A6979A /* InfoPlist.strings */,
+				51A5121015BDED5300A6979A /* main.m */,
+				51A5121215BDED5300A6979A /* FPStatusViewDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		51A511FF15BDED5300A6979A /* FPStatusViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51A5122115BDED5400A6979A /* Build configuration list for PBXNativeTarget "FPStatusViewDemo" */;
+			buildPhases = (
+				51A511FC15BDED5300A6979A /* Sources */,
+				51A511FD15BDED5300A6979A /* Frameworks */,
+				51A511FE15BDED5300A6979A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FPStatusViewDemo;
+			productName = FPStatusViewDemo;
+			productReference = 51A5120015BDED5300A6979A /* FPStatusViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		51A511F715BDED5300A6979A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Flying Pingu";
+			};
+			buildConfigurationList = 51A511FA15BDED5300A6979A /* Build configuration list for PBXProject "FPStatusViewDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 51A511F515BDED5300A6979A;
+			productRefGroup = 51A5120115BDED5300A6979A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				51A511FF15BDED5300A6979A /* FPStatusViewDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		51A511FE15BDED5300A6979A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51A5120F15BDED5300A6979A /* InfoPlist.strings in Resources */,
+				51A5121B15BDED5300A6979A /* ViewController_iPhone.xib in Resources */,
+				51A5121E15BDED5400A6979A /* ViewController_iPad.xib in Resources */,
+				515A0D3215ECEF4700F7060D /* videotchat-error.png in Resources */,
+				515A0D3315ECEF4700F7060D /* videotchat-error@2x.png in Resources */,
+				515A0D3415ECEF4700F7060D /* videotchat-hungup.png in Resources */,
+				515A0D3515ECEF4700F7060D /* videotchat-hungup@2x.png in Resources */,
+				515A0D3615ECEF4700F7060D /* videotchat-ringing.png in Resources */,
+				515A0D3715ECEF4700F7060D /* videotchat-ringing@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		51A511FC15BDED5300A6979A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51A5121115BDED5300A6979A /* main.m in Sources */,
+				51A5121515BDED5300A6979A /* AppDelegate.m in Sources */,
+				51A5121815BDED5300A6979A /* ViewController.m in Sources */,
+				515A0D1315ECEBE900F7060D /* FPStatusView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		51A5120D15BDED5300A6979A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				51A5120E15BDED5300A6979A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		51A5121915BDED5300A6979A /* ViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				51A5121A15BDED5300A6979A /* en */,
+			);
+			name = ViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		51A5121C15BDED5400A6979A /* ViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				51A5121D15BDED5400A6979A /* en */,
+			);
+			name = ViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		51A5121F15BDED5400A6979A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		51A5122015BDED5400A6979A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		51A5122215BDED5400A6979A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FPStatusViewDemo/FPStatusViewDemo-Prefix.pch";
+				INFOPLIST_FILE = "FPStatusViewDemo/FPStatusViewDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		51A5122315BDED5400A6979A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FPStatusViewDemo/FPStatusViewDemo-Prefix.pch";
+				INFOPLIST_FILE = "FPStatusViewDemo/FPStatusViewDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		51A511FA15BDED5300A6979A /* Build configuration list for PBXProject "FPStatusViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51A5121F15BDED5400A6979A /* Debug */,
+				51A5122015BDED5400A6979A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51A5122115BDED5400A6979A /* Build configuration list for PBXNativeTarget "FPStatusViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51A5122215BDED5400A6979A /* Debug */,
+				51A5122315BDED5400A6979A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 51A511F715BDED5300A6979A /* Project object */;
+}
