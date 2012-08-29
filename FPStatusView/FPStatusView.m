@@ -244,3 +244,50 @@
 }
 
 @end
+
+#import <objc/runtime.h>
+
+@implementation UIView (FPStatusView)
+
+static char UIViewStatusView;
+
+@dynamic statusView;
+
+- (void)showFPStatusViewAtCenterWithText:(NSString *)text andStatusIcon:(FPStatusIcon)icon
+{
+    self.statusView.center = self.center;
+    [self.statusView setStatusWithText:text andStatusIcon:icon];
+    
+    [self addSubview:self.statusView];
+}
+
+- (void)showFPStatusViewFromBottomWithText:(NSString *)text andStatusIcon:(FPStatusIcon)icon
+{
+    NSLog(@"TODOOOOOOOOO");
+}
+
+- (void)dismissFPStatusView
+{
+    [self.statusView removeFromSuperview];
+}
+
+- (void)setStatusView:(FPStatusView *)statusView
+{
+    [self willChangeValueForKey:@"statusView"];
+    objc_setAssociatedObject(self, &UIViewStatusView,
+                             statusView,
+                             OBJC_ASSOCIATION_RETAIN);
+    [self didChangeValueForKey:@"statusView"];
+}
+
+- (FPStatusView *)statusView
+{
+    FPStatusView *statusView = objc_getAssociatedObject(self, &UIViewStatusView);
+    if(!statusView) {
+        statusView = [[FPStatusView alloc] initWithFrame:CGRectZero];
+        self.statusView = statusView;
+    }
+    return statusView;
+}
+
+@end

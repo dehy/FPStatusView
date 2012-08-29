@@ -55,3 +55,13 @@ typedef enum {
 - (void)clickedButton:(id)sender;
 
 @end
+
+@interface UIView (FPStatusView)
+
+@property (nonatomic, retain) FPStatusView *statusView;
+
+- (void)showFPStatusViewAtCenterWithText:(NSString *)text andStatusIcon:(FPStatusIcon)icon;
+- (void)showFPStatusViewFromBottomWithText:(NSString *)text andStatusIcon:(FPStatusIcon)icon;
+- (void)dismissFPStatusView;
+
+@end
