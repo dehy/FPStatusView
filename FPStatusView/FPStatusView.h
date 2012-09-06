@@ -15,6 +15,7 @@ typedef enum {
     FPStatusError,
     FPStatusHungUp,
     FPStatusRinging,
+    FPStatusCalling
 } FPStatusIcon;
 
 @class FPStatusView;

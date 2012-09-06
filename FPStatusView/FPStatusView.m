@@ -22,7 +22,8 @@
         
         self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin;
         self.backgroundColor = [UIColor blackColor];
-        self.layer.cornerRadius = 5.0f;
+        self.layer.cornerRadius = 10.0f;
+        self.clipsToBounds = YES;
         
         _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         _activityIndicator.center = CGPointMake(22, 22);
@@ -33,7 +34,7 @@
         //_iconView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin;
         _iconView.alpha = 0.0;
         
-        _statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(_iconView.frame) + 12, 21, 0, 21)];
+        _statusLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         _statusLabel.backgroundColor = [UIColor clearColor];
         _statusLabel.textColor = [UIColor whiteColor];
         //_statusLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
@@ -78,14 +79,21 @@
     
     NSInteger newButtonCount = [newButtonArray count];
     
+    _maxSize = CGSizeMake(self.superview.bounds.size.width - (12 + _iconView.bounds.size.width + 12), self.superview.bounds.size.height);
+    
     CGSize newStatusLabelSize = [text sizeWithFont:_statusFont constrainedToSize:_maxSize lineBreakMode:UILineBreakModeWordWrap];
     CGSize newStatusViewSize = CGSizeMake(newStatusLabelSize.width, newStatusLabelSize.height + newButtonCount * 44);
     
-    CGSize oldStatusLabelSize = _statusLabel.frame.size;
-    CGSize oldStatusViewSize = CGSizeMake(oldStatusLabelSize.width, oldStatusLabelSize.height + newButtonCount * 44);
+    CGSize oldStatusLabelSize = _statusLabel.bounds.size;
+    //CGSize oldStatusViewSize = CGSizeMake(oldStatusLabelSize.width, oldStatusLabelSize.height + newButtonCount * 44);
+    CGSize oldStatusViewSize = self.bounds.size;
     
     CGFloat diffWidth = newStatusViewSize.width - newStatusViewSize.width;
     CGFloat diffHeight = oldStatusViewSize.height - oldStatusViewSize.height;
+    
+    // Mise à jour des propriétés du label
+    _statusLabel.font = _statusFont;
+    
     if (diffWidth >= 0 || diffHeight >= 0) { // nouveau status plus large ou plus haut;
         
         [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -140,7 +148,9 @@
         case FPStatusHungUp:
             iconImage = [UIImage imageNamed:@"videotchat-hungup"];
             break;
-            
+        case FPStatusCalling:
+            iconImage = [UIImage imageNamed:@"videotchat-calling"];
+            break;
         default:
             break;
     }
@@ -174,7 +184,7 @@
 
 - (void)makeStatusLabelDisappearWithSize:(CGSize)size
 {
-    _statusLabel.frame = CGRectMake(CGRectGetMaxX(_iconView.frame) + 12, 21, size.width, 21);
+    _statusLabel.frame = CGRectMake(CGRectGetMaxX(_iconView.frame) + 12, 12, size.width, size.height);
     CATransform3D _3Dt = CATransform3DMakeRotation(-M_PI_2, 1.0, 0.0, 0.0);
     _statusLabel.layer.shouldRasterize = TRUE;
     _statusLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
@@ -191,12 +201,18 @@
     _statusLabel.layer.shouldRasterize = TRUE;
     _statusLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
     _statusLabel.layer.transform = _3Dt;
-    _statusLabel.frame = CGRectMake(CGRectGetMaxX(_iconView.frame) + 12, 0, size.width, 21);
+    [_statusLabel sizeToFit];
+    CGRect statusLabelTmpFrame = _statusLabel.frame;
+    statusLabelTmpFrame.origin.x = CGRectGetMaxX(_iconView.frame) + 12;
+    statusLabelTmpFrame.origin.y = 12;
+    _statusLabel.frame = statusLabelTmpFrame;
+    //_statusLabel.backgroundColor = [UIColor redColor];
+    _statusLabel.numberOfLines = 0;
     
     for (UIButton *button in _buttonArray) {
         button.alpha = 0.0f;
         
-        CGSize textSize = [[button titleForState:UIControlStateNormal] sizeWithFont:_statusFont constrainedToSize:_maxSize lineBreakMode:UILineBreakModeTailTruncation];
+        CGSize textSize = [[button titleForState:UIControlStateNormal] sizeWithFont:_buttonFont constrainedToSize:_maxSize lineBreakMode:UILineBreakModeTailTruncation];
         button.bounds = CGRectMake(0, 0, 12 + textSize.width + 12, 8 + textSize.height + 8);
         button.center = CGPointMake(self.bounds.size.width/2, 12 + size.height + 12 + button.bounds.size.height/2 + [_buttonArray indexOfObject:button] * (button.bounds.size.height + 12));
         [self addSubview:button];
@@ -205,7 +221,7 @@
 
 - (void)makeStatusLabelAppearWithSize:(CGSize)size
 {
-    _statusLabel.frame = CGRectMake(CGRectGetMaxX(_iconView.frame) + 12, 12, size.width, 21);
+    _statusLabel.frame = CGRectMake(CGRectGetMaxX(_iconView.frame) + 12, 12, size.width, size.height);
     CATransform3D _3Dt = CATransform3DMakeRotation(0, 1.0, 0.0, 0.0);
     _statusLabel.layer.shouldRasterize = TRUE;
     _statusLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
@@ -218,7 +234,7 @@
 
 - (void)resizeStatusViewWithLabelSize:(CGSize)size andButtonCount:(NSInteger)buttonCount
 {
-    self.bounds = CGRectMake(0, 0, CGRectGetMaxX(_iconView.frame) + 12 + size.width + 12, 12 + size.height + 12 + buttonCount * (44 + 12));
+    self.bounds = CGRectMake(0, 0, CGRectGetMaxX(_iconView.frame) + 12 + size.width + 12, 12 + size.height + 0 + buttonCount * (44 + 12));
 }
 
 - (void)clickedButton:(id)sender
