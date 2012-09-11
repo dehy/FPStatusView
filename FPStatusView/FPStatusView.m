@@ -80,6 +80,8 @@
     NSInteger newButtonCount = [newButtonArray count];
     
     _maxSize = CGSizeMake(self.superview.bounds.size.width - (12 + _iconView.bounds.size.width + 12), self.superview.bounds.size.height);
+    CWLogDebug(@"Superview frame: %@", NSStringFromCGRect(self.superview.frame));
+    CWLogDebug(@"FPStatusView MaxSize : %@", NSStringFromCGSize(_maxSize));
     
     CGSize newStatusLabelSize = [text sizeWithFont:_statusFont constrainedToSize:_maxSize lineBreakMode:UILineBreakModeWordWrap];
     CGSize newStatusViewSize = CGSizeMake(newStatusLabelSize.width, newStatusLabelSize.height + newButtonCount * 44);
@@ -271,10 +273,19 @@ static char UIViewStatusView;
 
 - (void)showFPStatusViewAtCenterWithText:(NSString *)text andStatusIcon:(FPStatusIcon)icon
 {
-    self.statusView.center = self.center;
-    [self.statusView setStatusWithText:text andStatusIcon:icon];
+    if (self.statusView.alpha == 0) {
+        [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+            self.statusView.alpha = 1.0;
+        } completion:^(BOOL finished) {
+            
+        }];
+    }
+    
     
     [self addSubview:self.statusView];
+    
+    self.statusView.center = self.center;
+    [self.statusView setStatusWithText:text andStatusIcon:icon];
 }
 
 - (void)showFPStatusViewFromBottomWithText:(NSString *)text andStatusIcon:(FPStatusIcon)icon
@@ -284,7 +295,11 @@ static char UIViewStatusView;
 
 - (void)dismissFPStatusView
 {
-    [self.statusView removeFromSuperview];
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationCurveEaseInOut animations:^{
+        self.statusView.alpha = 0.0;
+    } completion:^(BOOL finished) {
+        [self.statusView removeFromSuperview];
+    }];
 }
 
 - (void)setStatusView:(FPStatusView *)statusView
@@ -301,6 +316,7 @@ static char UIViewStatusView;
     FPStatusView *statusView = objc_getAssociatedObject(self, &UIViewStatusView);
     if(!statusView) {
         statusView = [[FPStatusView alloc] initWithFrame:CGRectZero];
+        statusView.alpha = 0.0;
         self.statusView = statusView;
     }
     return statusView;
