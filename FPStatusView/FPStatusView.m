@@ -15,33 +15,33 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        _statusFont = [UIFont fontWithName:@"HelveticaNeue" size:18];
-        _buttonFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
-        _maxSize = CGSizeMake(600, 100);
-        _buttonArray = [[NSMutableArray alloc] init];
+        self.statusFont = [UIFont fontWithName:@"HelveticaNeue" size:18];
+        self.buttonFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+        self.maxSize = CGSizeMake(600, 100);
+        self.buttonArray = [[NSMutableArray alloc] init];
         
         self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin;
         self.backgroundColor = [UIColor blackColor];
         self.layer.cornerRadius = 10.0f;
         self.clipsToBounds = YES;
         
-        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        _activityIndicator.center = CGPointMake(22, 22);
-        _activityIndicator.hidesWhenStopped = YES;
-        //_activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin;
+        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        self.activityIndicator.center = CGPointMake(22, 22);
+        self.activityIndicator.hidesWhenStopped = YES;
+        //self.activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin;
         
-        _iconView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 21, 21)];
-        //_iconView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin;
-        _iconView.alpha = 0.0;
+        self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 21, 21)];
+        //self.iconView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin;
+        self.iconView.alpha = 0.0;
         
-        _statusLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-        _statusLabel.backgroundColor = [UIColor clearColor];
-        _statusLabel.textColor = [UIColor whiteColor];
-        //_statusLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
+        self.statusLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.statusLabel.backgroundColor = [UIColor clearColor];
+        self.statusLabel.textColor = [UIColor whiteColor];
+        //self.statusLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
         
-        [self addSubview:_activityIndicator];
-        [self addSubview:_iconView];
-        [self addSubview:_statusLabel];
+        [self addSubview:self.activityIndicator];
+        [self addSubview:self.iconView];
+        [self addSubview:self.statusLabel];
         
     }
     
@@ -64,7 +64,7 @@
         UIButton *newButton = [[UIButton alloc] init];
         [newButton setTitle:arg forState:UIControlStateNormal];
         [newButton setBackgroundColor:[UIColor whiteColor]];
-        [[newButton titleLabel] setFont:_buttonFont];
+        [[newButton titleLabel] setFont:self.buttonFont];
         [newButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         newButton.layer.cornerRadius = 5.0f;
         newButton.tag = tagI;
@@ -79,14 +79,14 @@
     
     NSInteger newButtonCount = [newButtonArray count];
     
-    _maxSize = CGSizeMake(self.superview.bounds.size.width - (12 + _iconView.bounds.size.width + 12), self.superview.bounds.size.height);
+    self.maxSize = CGSizeMake(self.superview.bounds.size.width - (12 + self.iconView.bounds.size.width + 12), self.superview.bounds.size.height);
     CWLogDebug(@"Superview frame: %@", NSStringFromCGRect(self.superview.frame));
-    CWLogDebug(@"FPStatusView MaxSize : %@", NSStringFromCGSize(_maxSize));
+    CWLogDebug(@"FPStatusView MaxSize : %@", NSStringFromCGSize(self.maxSize));
     
-    CGSize newStatusLabelSize = [text sizeWithFont:_statusFont constrainedToSize:_maxSize lineBreakMode:UILineBreakModeWordWrap];
+    CGSize newStatusLabelSize = [text sizeWithFont:self.statusFont constrainedToSize:self.maxSize lineBreakMode:UILineBreakModeWordWrap];
     CGSize newStatusViewSize = CGSizeMake(newStatusLabelSize.width, newStatusLabelSize.height + newButtonCount * 44);
     
-    CGSize oldStatusLabelSize = _statusLabel.bounds.size;
+    CGSize oldStatusLabelSize = self.statusLabel.bounds.size;
     //CGSize oldStatusViewSize = CGSizeMake(oldStatusLabelSize.width, oldStatusLabelSize.height + newButtonCount * 44);
     CGSize oldStatusViewSize = self.bounds.size;
     
@@ -94,7 +94,7 @@
     CGFloat diffHeight = oldStatusViewSize.height - oldStatusViewSize.height;
     
     // Mise à jour des propriétés du label
-    _statusLabel.font = _statusFont;
+    self.statusLabel.font = self.statusFont;
     
     if (diffWidth >= 0 || diffHeight >= 0) { // nouveau status plus large ou plus haut;
         
@@ -104,13 +104,13 @@
             // on fait disparaitre
             [self makeStatusLabelDisappearWithSize:oldStatusLabelSize];
         } completion:^(BOOL finished) {
-            for (UIButton *button in _buttonArray) {
+            for (UIButton *button in self.buttonArray) {
                 [button removeFromSuperview];
             }
-            [_buttonArray removeAllObjects];
-            _buttonArray = newButtonArray;
+            [self.buttonArray removeAllObjects];
+            self.buttonArray = newButtonArray;
             // puis on fait apparaitre
-            _statusLabel.text = text;
+            self.statusLabel.text = text;
             [self prepareStatusLabelToAppearWithSize:newStatusLabelSize];
             [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                 [self makeStatusLabelAppearWithSize:newStatusLabelSize];
@@ -123,12 +123,12 @@
             // on fait disparaitre
             [self makeStatusLabelDisappearWithSize:oldStatusLabelSize];
         } completion:^(BOOL finished) {
-            for (UIButton *button in _buttonArray) {
+            for (UIButton *button in self.buttonArray) {
                 [button removeFromSuperview];
             }
-            [_buttonArray removeAllObjects];
-            _buttonArray = newButtonArray;
-            _statusLabel.text = text;
+            [self.buttonArray removeAllObjects];
+            self.buttonArray = newButtonArray;
+            self.statusLabel.text = text;
             // puis on fait apparaitre + on rétrécit
             [self prepareStatusLabelToAppearWithSize:newStatusLabelSize];
             [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -166,33 +166,33 @@
 
 - (void)setStatusIconWithImage:(UIImage *)image
 {
-    [_activityIndicator stopAnimating];
+    [self.activityIndicator stopAnimating];
     
-    _iconView.image = image;
+    self.iconView.image = image;
     
     [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        _iconView.alpha = 1.0f;
+        self.iconView.alpha = 1.0f;
     } completion:nil];
 }
 
 - (void)setStatusIconWithActivityIndicator
 {
-    [_activityIndicator startAnimating];
+    [self.activityIndicator startAnimating];
     
     [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-        _iconView.alpha = 0.0f;
+        self.iconView.alpha = 0.0f;
     } completion:nil];
 }
 
 - (void)makeStatusLabelDisappearWithSize:(CGSize)size
 {
-    _statusLabel.frame = CGRectMake(CGRectGetMaxX(_iconView.frame) + 12, 12, size.width, size.height);
+    self.statusLabel.frame = CGRectMake(CGRectGetMaxX(self.iconView.frame) + 12, 12, size.width, size.height);
     CATransform3D _3Dt = CATransform3DMakeRotation(-M_PI_2, 1.0, 0.0, 0.0);
-    _statusLabel.layer.shouldRasterize = TRUE;
-    _statusLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
-    _statusLabel.layer.transform = _3Dt;
+    self.statusLabel.layer.shouldRasterize = TRUE;
+    self.statusLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    self.statusLabel.layer.transform = _3Dt;
     
-    for (UIButton *button in _buttonArray) {
+    for (UIButton *button in self.buttonArray) {
         button.alpha = 0.0f;
     }
 }
@@ -200,64 +200,64 @@
 - (void)prepareStatusLabelToAppearWithSize:(CGSize)size
 {
     CATransform3D _3Dt = CATransform3DMakeRotation(-M_PI_2, 1.0, 0.0, 0.0);
-    _statusLabel.layer.shouldRasterize = TRUE;
-    _statusLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
-    _statusLabel.layer.transform = _3Dt;
-    [_statusLabel sizeToFit];
-    CGRect statusLabelTmpFrame = _statusLabel.frame;
-    statusLabelTmpFrame.origin.x = CGRectGetMaxX(_iconView.frame) + 12;
+    self.statusLabel.layer.shouldRasterize = TRUE;
+    self.statusLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    self.statusLabel.layer.transform = _3Dt;
+    [self.statusLabel sizeToFit];
+    CGRect statusLabelTmpFrame = self.statusLabel.frame;
+    statusLabelTmpFrame.origin.x = CGRectGetMaxX(self.iconView.frame) + 12;
     statusLabelTmpFrame.origin.y = 12;
-    _statusLabel.frame = statusLabelTmpFrame;
-    //_statusLabel.backgroundColor = [UIColor redColor];
-    _statusLabel.numberOfLines = 0;
+    self.statusLabel.frame = statusLabelTmpFrame;
+    //self.statusLabel.backgroundColor = [UIColor redColor];
+    self.statusLabel.numberOfLines = 0;
     
-    for (UIButton *button in _buttonArray) {
+    for (UIButton *button in self.buttonArray) {
         button.alpha = 0.0f;
         
-        CGSize textSize = [[button titleForState:UIControlStateNormal] sizeWithFont:_buttonFont constrainedToSize:_maxSize lineBreakMode:UILineBreakModeTailTruncation];
+        CGSize textSize = [[button titleForState:UIControlStateNormal] sizeWithFont:self.buttonFont constrainedToSize:self.maxSize lineBreakMode:UILineBreakModeTailTruncation];
         button.bounds = CGRectMake(0, 0, 12 + textSize.width + 12, 8 + textSize.height + 8);
-        button.center = CGPointMake(self.bounds.size.width/2, 12 + size.height + 12 + button.bounds.size.height/2 + [_buttonArray indexOfObject:button] * (button.bounds.size.height + 12));
+        button.center = CGPointMake(self.bounds.size.width/2, 12 + size.height + 12 + button.bounds.size.height/2 + [self.buttonArray indexOfObject:button] * (button.bounds.size.height + 12));
         [self addSubview:button];
     }
 }
 
 - (void)makeStatusLabelAppearWithSize:(CGSize)size
 {
-    _statusLabel.frame = CGRectMake(CGRectGetMaxX(_iconView.frame) + 12, 12, size.width, size.height);
+    self.statusLabel.frame = CGRectMake(CGRectGetMaxX(self.iconView.frame) + 12, 12, size.width, size.height);
     CATransform3D _3Dt = CATransform3DMakeRotation(0, 1.0, 0.0, 0.0);
-    _statusLabel.layer.shouldRasterize = TRUE;
-    _statusLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
-    _statusLabel.layer.transform = _3Dt;
+    self.statusLabel.layer.shouldRasterize = TRUE;
+    self.statusLabel.layer.rasterizationScale = [[UIScreen mainScreen] scale];
+    self.statusLabel.layer.transform = _3Dt;
     
-    for (UIButton *button in _buttonArray) {
+    for (UIButton *button in self.buttonArray) {
         button.alpha = 1.0f;
     }
 }
 
 - (void)resizeStatusViewWithLabelSize:(CGSize)size andButtonCount:(NSInteger)buttonCount
 {
-    self.bounds = CGRectMake(0, 0, CGRectGetMaxX(_iconView.frame) + 12 + size.width + 12, 12 + size.height + 0 + buttonCount * (44 + 12));
+    self.bounds = CGRectMake(0, 0, CGRectGetMaxX(self.iconView.frame) + 12 + size.width + 12, 12 + size.height + 0 + buttonCount * (44 + 12));
 }
 
 - (void)clickedButton:(id)sender
 {
     NSLog(@"clickedButton with tag: %i", [(UIButton *)sender tag]);
     
-    if ([_delegate respondsToSelector:@selector(statusView:clickedButtonAtIndex:)]) {
-        [_delegate statusView:self clickedButtonAtIndex:[(UIButton *)sender tag]];
+    if ([self.delegate respondsToSelector:@selector(statusView:clickedButtonAtIndex:)]) {
+        [self.delegate statusView:self clickedButtonAtIndex:[(UIButton *)sender tag]];
     }
 }
 
 - (void)dealloc
 {
-    [_buttonArray removeAllObjects];
-    [_buttonArray release];
+    [self.buttonArray removeAllObjects];
+    [self.buttonArray release];
     
-    [_statusFont release];
+    [self.statusFont release];
     
-    [_statusLabel release];
-    [_iconView release];
-    [_activityIndicator release];
+    [self.statusLabel release];
+    [self.iconView release];
+    [self.activityIndicator release];
     [super dealloc];
 }
 
