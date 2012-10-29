@@ -18,23 +18,23 @@
         self.statusFont = [UIFont fontWithName:@"HelveticaNeue" size:18];
         self.buttonFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
         self.maxSize = CGSizeMake(600, 100);
-        self.buttonArray = [[NSMutableArray alloc] init];
+        _buttonArray = [[NSMutableArray alloc] init];
         
         self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin;
         self.backgroundColor = [UIColor blackColor];
         self.layer.cornerRadius = 10.0f;
         self.clipsToBounds = YES;
         
-        self.activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+        _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
         self.activityIndicator.center = CGPointMake(22, 22);
         self.activityIndicator.hidesWhenStopped = YES;
         //self.activityIndicator.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleRightMargin;
         
-        self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 21, 21)];
+        _iconView = [[UIImageView alloc] initWithFrame:CGRectMake(12, 12, 21, 21)];
         //self.iconView.autoresizingMask = UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleBottomMargin|UIViewAutoresizingFlexibleTopMargin;
         self.iconView.alpha = 0.0;
         
-        self.statusLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+        _statusLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.statusLabel.backgroundColor = [UIColor clearColor];
         self.statusLabel.textColor = [UIColor whiteColor];
         //self.statusLabel.autoresizingMask = UIViewAutoresizingFlexibleRightMargin;
@@ -251,13 +251,13 @@
 - (void)dealloc
 {
     [self.buttonArray removeAllObjects];
-    [self.buttonArray release];
+    [_buttonArray release];
     
-    [self.statusFont release];
+    [_statusFont release];
     
-    [self.statusLabel release];
-    [self.iconView release];
-    [self.activityIndicator release];
+    [_statusLabel release];
+    [_iconView release];
+    [_activityIndicator release];
     [super dealloc];
 }
 
