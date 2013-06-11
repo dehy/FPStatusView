@@ -318,8 +318,9 @@ static char UIViewStatusView;
         statusView = [[FPStatusView alloc] initWithFrame:CGRectZero];
         statusView.alpha = 0.0;
         self.statusView = statusView;
+        [statusView release];
     }
-    return statusView;
+    return self.statusView;
 }
 
 @end
